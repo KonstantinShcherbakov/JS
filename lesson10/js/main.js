@@ -51,10 +51,20 @@ console.log("---------------------------------------------");
 console.log("3 task\n---------------------------------------------");
 
 function addRecord() {
-	for (var i = 0; i < arguments.length; i++) {
-		console.log(arguments[i]);
+	var argumentsLenght;
+	var flag = false;
+	if(typeof(arguments[arguments.length-1])==='boolean') {
+		argumentsLenght = arguments.length - 1;
+		flag = arguments[arguments.length-1];
+	}
+	else {
+		argumentsLenght = arguments.length;
+	}
+	for (var i = 0; i < argumentsLenght; i++) {
 		for (var j = 0; j < Object.keys(arguments[i]).length; j++) {
-			this[Object.keys(arguments[i])[j]] = arguments[i][Object.keys(arguments[i])[j]];
+			if(!(flag&&this.hasOwnProperty(Object.keys(arguments[i])[j]))) {
+				this[Object.keys(arguments[i])[j]] = arguments[i][Object.keys(arguments[i])[j]];
+			}
 		}
 	}
 	console.log(this);
@@ -64,6 +74,6 @@ data = {
 	addRecord: addRecord,
 }
 
-data.addRecord({x: 'y',jojo: 5},{papa: 43, x: 53});
+data.addRecord({x: 'y',jojo: 5},{papa: 43, x: 53},{papa: 'mama'},true);
 
 console.log("---------------------------------------------");
