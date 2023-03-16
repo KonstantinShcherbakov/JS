@@ -1,0 +1,30 @@
+.container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border {
+    height: 216px;
+    width: 50px;
+    background-color: grey;
+    border: 1px solid;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.comission {
+    width: 100%;
+    height: 5px;
+    background-color: red;
+}
+
+.money {
+    width: 100%;
+    height: 5px;
+    background-color: green;
+}
