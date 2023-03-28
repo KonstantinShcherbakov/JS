@@ -1,5 +1,5 @@
 .container-wrp {
-    height: 600px;
+    height: 800px;
     width: 100%;
     background-color: grey;
 
@@ -16,17 +16,17 @@
 }
 
 .container {
-    height: 600px;
+    height: 800px;
     width: 100%;
 
     display: flex;
 
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .slider-wrp {
-    height: 600px;
-    width: 100%;
+    height: 800px;
+    width: 1920px;
 
     flex-shrink: 0;
 
@@ -35,13 +35,65 @@
 
 .controll {
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
+
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40px;
+    width: 40px;
+}
+
+.btn:hover {
+    background-color: yellow;
+}
+
+.btn:active {
+    background-color: red;
 }
 
 .img {
-    width: 100%;
+    width: 1920px;
     height: auto;
 
     position: absolute;
     bottom: 0;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+
+    align-items: center;
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+
+    border-radius: 50%;
+
+    background-color: white;
+
+    border: 2px solid;
+}
+
+.dot:hover {
+    background-color: yellow;
+}
+
+.dot:active {
+    background-color: red;
+}
+
+.dot.current {
+    background-color: green;
 }
