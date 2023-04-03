@@ -63,3 +63,31 @@ function onResize() {
 }
 
 window.addEventListener("resize", onResize)
+
+setInterval(changeSlide,5000,true);
+
+const popupBtn = document.querySelector('.open-popup');
+const main = document.querySelector('main');
+const popupWrap = document.querySelector('.popup-wrp');
+const closePopupBtn = document.querySelector('.close-btn');
+
+function openPopup() {
+	main.style.filter = 'blur(3px)';
+	popupWrap.style.visibility = 'visible';
+}
+
+function closePopup() {
+	main.style.filter = 'none';
+	popupWrap.style.visibility = 'hidden';
+}
+
+function closePopupEmptySpace() {
+	if(event.target===popupWrap) {
+		main.style.filter = 'none';
+		popupWrap.style.visibility = 'hidden';
+	}
+}
+
+closePopupBtn.addEventListener('click',closePopup);
+popupBtn.addEventListener('click',openPopup);
+popupWrap.addEventListener('click',closePopupEmptySpace);
