@@ -18,8 +18,8 @@ for (let index = 0; index < counters.length; index++) {
 clearBtn.addEventListener('click', function(){
 	for(let index = 0; index < counters.length; index++) {
 		counters[index].innerHTML=0;
+		localStorage.setItem(`counter${index}`,counters[index].innerHTML);
 	}
-	localStorage.clear();
 })
 
 const setButtons = document.querySelectorAll('.set-button');
