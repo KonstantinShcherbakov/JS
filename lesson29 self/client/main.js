@@ -1,8 +1,38 @@
 let xhr = new XMLHttpRequest;
+let getGoods = new XMLHttpRequest;
 
 xhr.onload = function() {
-    let data = JSON.parse(xhr.response);
-    console.log(data);
+    if(xhr.response==='Unauthorized'){
+        alert('Unauthorized, try again.');
+        return;
+    }
+    getGoods.open('GET',`http://localhost:3005/getGoods?id=${xhr.response}`);
+    getGoods.send();
+};
+
+getGoods.onload = function() {
+    console.log(getGoods.response, 'getGoods res');
+    let userGoods = JSON.parse(getGoods.response);
+    console.log(userGoods, 'userGoods');
+
+    const oldGoods = document.querySelectorAll('.goods');
+
+    for (const oldGood of oldGoods) {
+        oldGood.remove();
+    }
+
+    const goods = document.createElement('div');
+    goods.classList.add('goods');
+
+    for (const good of userGoods) {
+        const goodElement = document.createElement('div');
+        goodElement.classList.add('good');
+        goodElement.innerHTML = `${good.name} - ${good.count}`;
+
+        goods.appendChild(goodElement);
+    }
+
+    document.body.appendChild(goods);
 };
 
 const btn = document.querySelector('.btn');
@@ -15,6 +45,6 @@ btn.addEventListener('click', event => {
         alert('Не все поля заполнены!');
         return;
     }
-    xhr.open('GET',`http://localhost:3005/test?login=${login.value}&password=${password.value}`);
+    xhr.open('GET',`http://localhost:3005/getId?login=${login.value}&password=${password.value}`);
     xhr.send();
 })

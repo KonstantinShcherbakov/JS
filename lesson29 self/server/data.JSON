@@ -1,1 +1,4 @@
-{"login":"Example","password":"12345dadsd"}
+[
+    {"login":"admin", "password": "admin", "id": 1},
+    {"login":"Example", "password": "12345", "id": 2}
+]

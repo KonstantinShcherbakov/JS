@@ -20,10 +20,23 @@ app.listen(port, function () {
     console.log(`Example app listening on port http://localhost:${port}/`);
   });
 
-app.get('/test', function(req,res){
+app.get('/getId', function(req,res){
     console.log(req.query);
-    fs.writeFile('data.JSON', JSON.stringify(req.query), function(){
-      console.log('Data saved');
-    });
-    res.send(req.query);
+    let users = JSON.parse(fs.readFileSync('data.JSON','utf-8'));
+    for (const person of users) {
+      if(req.query.login===person.login&&req.query.password===person.password){
+        res.send(`${person.id}`);
+        return;
+      }
+    }
+    res
+      .status(401)
+      .send('Unauthorized');
+});
+
+app.get('/getGoods', function(req,res){
+  console.log(req.query, 'query getGoods');
+  let goods = fs.readFileSync(`usersData/user${req.query.id}.json`,'utf-8');
+  console.log(typeof goods, 'goods');
+  res.send(goods);
 });
