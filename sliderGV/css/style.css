@@ -34,7 +34,7 @@
     display: none;
 }
 
-.slider__active-img {
+.slider__img.active {
     display: block;
 }
 
@@ -55,8 +55,9 @@
     border: 1px solid black;
 }
 
-.slider__section-active {
-    max-height: none;
+.slider__section.active {
+    max-height: 300px;
 
     border-bottom: 1px solid #C4C4C4;
 }
+

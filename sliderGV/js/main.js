@@ -1,8 +1,9 @@
 let slider_sections = document.querySelectorAll('.slider__section');
 let slider_images = document.querySelectorAll('.slider__img');
+let arrSlid = [slider_sections, slider_images];
 let currentSliderIndex = 0;
 
-console.log(slider_sections);
+// console.log(slider_sections);
 
 // function changeSlide(event,index) {
 // 	if(index!==currentSliderIndex) {
@@ -22,11 +23,16 @@ console.log(slider_sections);
 slider_sections.forEach((el, index) => {
 	el.addEventListener('click', () => {
 		if(index!==currentSliderIndex) {
-			slider_sections[currentSliderIndex].classList.remove('slider__section-active');
-			slider_images[currentSliderIndex].classList.remove('slider__active-img');
-			slider_images[index].classList.add('slider__active-img');
+			delActive(arrSlid, currentSliderIndex);
+			slider_images[index].classList.add('active');
 		}
-		slider_sections[index].classList.toggle('slider__section-active');
+		slider_sections[index].classList.toggle('active');
 		currentSliderIndex = index;
 	});
 });
+
+function delActive(paramArr, index) {
+	paramArr.forEach(el => {
+		el[index].classList.remove('active');
+	})
+}
