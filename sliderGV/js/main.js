@@ -40,6 +40,7 @@ window.addEventListener('resize',changeSlide);
 
 slider_Wrap.addEventListener('touchstart', (event) => {
 	x1 = event.touches[0].clientX;
+	console.log(x1,'x1');
 	y1 = event.touches[0].clientY;
 })
 
@@ -50,17 +51,23 @@ slider_Wrap.addEventListener('touchmove', (event) => {
 
 slider_Wrap.addEventListener('touchend', (event) => {
 	let diff = x1-x2;
-	if(diff >= 100) {
+	console.log(x2,'x2');
+	console.log(diff,'diff');
+	if(diff >= 100 && x2) {
+		delActive(arrSlid, counter);
 		counter++;
 		if(counter >= slider_images.length) {
 			counter = 0;
 		}
+		slider_sections[counter].classList.add('active');
 		changeSlide();
-	} else if (diff <= -100) {
+	} else if (diff <= -100 && x2) {
+		delActive(arrSlid, counter);
 		counter--;
 		if(counter < 0) {
 			counter = slider_images.length - 1;
 		}
+		slider_sections[counter].classList.add('active');
 		changeSlide();
 	}
 	x1 = null;
