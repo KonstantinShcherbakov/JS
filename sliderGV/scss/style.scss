@@ -40,6 +40,8 @@ p {
     &__img-wrp {
         max-width: 711px;
 
+        height: max-content;
+
         border-radius: 10px;
     
         overflow: hidden;
@@ -55,20 +57,16 @@ p {
     
     &__img {
         width: 100%;
-    
-        display: none;
+    }
 
+    &__sections {
         @include __860 {
-            display: block;
+            position: relative;
         }
     }
     
-    &__img.active {
-        display: block;
-    }
-    
     &__section {
-        max-height: 23px;
+        max-height: 18px;
     
         padding-bottom: 16px;
     
@@ -88,9 +86,13 @@ p {
 
             border-bottom: none;
 
-            display: none;
+            visibility: hidden;
 
             opacity: 0;
+
+            position: absolute;
+
+            left: 0;
         }
     }
     
@@ -104,7 +106,7 @@ p {
         @include __860 {
             border-bottom: none;
 
-            display: block;
+            visibility: visible;
 
             opacity: 1;
         }
@@ -160,5 +162,46 @@ p {
     
     &__section-link {
         color: #009B3E;
+    }
+
+    &__controls {
+        display: none;
+
+        @include __860 {
+            margin: 0 auto;
+
+            padding-top: 8px;
+
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+    }
+
+    &__controls-btn {
+        width: 32px;
+        height: 32px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+
+        box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+    }
+
+    &__controls-dot {
+        width: 12px;
+        height: 12px;
+
+        border-radius: 50%;
+
+        background: #C4C4C4;
+    }
+
+    &__controls-dot.active {
+        background: #009B3E;
     }
 }
