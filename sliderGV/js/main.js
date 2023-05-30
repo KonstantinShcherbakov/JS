@@ -59,6 +59,14 @@ slider_headers.forEach((el, index) => {
 	});
 });
 
+slider_dots.forEach((el, index) => {
+	el.addEventListener('click', () => {
+		delActive(arrSlid, currentSliderIndex);
+		currentSliderIndex = index;
+		changeSlide();
+	});
+});
+
 slider_Wrap.addEventListener('touchstart', (event) => {
 	x1 = event.touches[0].clientX;
 })

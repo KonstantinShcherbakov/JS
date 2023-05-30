@@ -156,6 +156,7 @@ p {
   height: 12px;
   border-radius: 50%;
   background: #C4C4C4;
+  cursor: pointer;
 }
 .slider__controls-dot.active {
   background: #009B3E;
